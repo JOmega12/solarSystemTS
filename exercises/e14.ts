@@ -2,7 +2,18 @@
 // Return the sum of orbital periods of all asteroids
 // Return example: 234234.234
 
-export function getOrbitalPeriodsSum(asteroids) {}
+import { Asteroid } from "../data/dataTypes";
+
+export function getOrbitalPeriodsSum(asteroids: Asteroid[]) {
+   
+   const orbitalPArrays = asteroids.map((item) => item.orbitalPeriod);
+
+   const totalOP = orbitalPArrays.reduce((total, current) => {
+      return (total || 0) + (current || 0)
+   }, 0)
+
+   return totalOP;
+}
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-14"

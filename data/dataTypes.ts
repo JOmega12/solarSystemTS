@@ -33,4 +33,6 @@ export type MassData = {
  
  export type AllData = {
    // something
+   planets: Planet[];
+   asteroids: Asteroid[];
  };

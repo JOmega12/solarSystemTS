@@ -4,12 +4,19 @@
 
 import { Planet } from "../data/dataTypes";
 
-export let findEarthData = (data:Planet[]) => {
+export let findEarthData = (data: {planets: Planet[]}) => {
 
-   return data.find((item) => item.name.includes("Earth"));
+   const totalPlanets:Planet[] = data.planets;
+
+   return totalPlanets
+      .filter((item) => {
+         return item.name === 'Earth';
+      })[0]; 
 };
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-9"
 // If the test has all tests passed, switch to the next exercise file
 // If any of the tests fails, refactor the code and run the test command after you've fixed the function
+
+
