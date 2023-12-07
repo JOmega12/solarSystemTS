@@ -1,6 +1,8 @@
 
 // type T = {name: string, age: number};
 
+import { Type } from "typescript";
+
 // import { T } from "vitest/dist/types-71ccd11d";
 // type T = [id: string, result: TaskResult | undefined]
 
