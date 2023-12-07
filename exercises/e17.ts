@@ -1,32 +1,41 @@
 
-type T = {name: string, age: number}
+// type T = {name: string, age: number};
 
-export const minBy = (array: (T[] | undefined), cb:(item: T) => number): T | undefined => {
+// import { T } from "vitest/dist/types-71ccd11d";
+// type T = [id: string, result: TaskResult | undefined]
+
+// type T = string | number;
+
+type T = {
+   name: string;
+   age: number;
+}
+
+export const minBy = (array: T[], cb:(input: T) => T): T | undefined => {
    
    if(!array || array.length === 0) {
       return undefined;
    } else {
       let firstArray: T | undefined = array[0];
-      for (let i = 0; i < array.length; i++) {
-         if (firstArray !== undefined  && cb(firstArray) > cb(array[i] as T)) {
-            firstArray = array[i]
+      for (let el of array) {
+         if(firstArray !== undefined && cb(firstArray) > cb(el)) {
+            firstArray = el
          }
       }
       return firstArray;
    }
-
 };
 
-export function maxBy <T>(array: T[], cb: (item: T) => number): T | undefined {
+export function maxBy <T>(array: T[], cb: (item: T) => T): T | undefined {
    if (!array || array.length === 0) {
       return undefined;
-    }
-  
-    let firstArray: T | undefined = array[0];
-    for (let i = 1; i < array.length; i++) {
-      if (cb(array[i]!) > cb(firstArray as T)) {
-        firstArray = array[i];
+    } else {
+      let firstArray: T | undefined = array[0];
+      for(let el of array) {
+         if(firstArray !== undefined && cb(firstArray) < cb(el)){
+            firstArray = el
+         }
       }
+      return firstArray;
     }
-    return firstArray;
 }
