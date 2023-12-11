@@ -5,11 +5,10 @@
 import { Planet } from "../data/dataTypes";
 
 export function getAveragePlanetsTemperature(data: {planets: Planet[]}) {
-   const totalPlanets = data.planets.map((item) => item).length;
+   const totalPlanets = data.planets.length;
    const avgTempPlanets= data.planets.filter((item) => {
       if(item.avgTemp){
-         console.log(item.avgTemp, 'avgtemp')
-         return item.avgTemp;
+         return true;
       }
    }).map((item) => item.avgTemp);
 

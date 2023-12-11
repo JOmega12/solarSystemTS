@@ -4,17 +4,21 @@
 import { Planet } from "../data/dataTypes";
 
 // Return example: 42
-export const allPlanetsMoonsCount = (data: {planets: Planet[]}) => {
-   const planetArrayWithMoons = data.planets.filter((item) => {
-      if(item.moonsCount !== undefined) {
-        return item.moonsCount
-      } 
-    }).map((item) => item.moonsCount);
-    const totalMoons = planetArrayWithMoons.reduce((total , current) => {
-      return (total || 0) + (current || 0);
-    }, 0)
+export const allPlanetsMoonsCount = (data: { planets: Planet[] }) => {
+  const planetArrayWithMoons = data.planets
+    .filter((planet): planet is Planet & { moonsCount: number } => {
+      if (planet.moonsCount !== undefined) {
+        return true;
+      }
+      return false;
+    })
+    .map((item) => item.moonsCount);
 
-    return totalMoons;
+  const totalMoons = planetArrayWithMoons.reduce((total, current) => {
+    return total + current;
+  }, 0);
+
+  return totalMoons;
 };
 
 // === TEST YOURSELF ===

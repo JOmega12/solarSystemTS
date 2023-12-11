@@ -7,13 +7,10 @@ import { Planet } from "../data/dataTypes";
 export function lowMoonsPlanets(planets: Planet[]) {
 
    return planets
-   .filter((item) => {
-      const planetMoons = item.moons;
-      if(!planetMoons || planetMoons?.length < 10) {
-         return item.name
-      }
+   .filter((planet) => {
+      if( planet.moons === undefined) return true
+      return planet.moons?.length < 10
    })
-   .map((item) => item)
 }
 
 // === TEST YOURSELF ===
