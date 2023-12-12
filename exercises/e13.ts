@@ -13,7 +13,7 @@ export function getAveragePlanetsTemperature(data: {planets: Planet[]}) {
    }).map((item) => item.avgTemp);
 
    const totalAvgTemp = avgTempPlanets.reduce((total, current) => {
-      return (total || 0) + (current || 0);
+      return total + current;
    }, 0)
 
    return totalAvgTemp/ totalPlanets;

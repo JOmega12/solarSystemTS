@@ -7,10 +7,9 @@ export function getPlanetsWithNoMoons(planets: Planet[]) {
    return planets
       .filter((item) => {
          if(!item.moons){
-            return item.name
+            return true
          }
       })
-      .map((item) => item)
 }
 
 // === TEST YOURSELF ===

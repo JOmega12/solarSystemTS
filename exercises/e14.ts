@@ -9,7 +9,7 @@ export function getOrbitalPeriodsSum(asteroids: Asteroid[]) {
    const orbitalPArrays = asteroids.map((item) => item.orbitalPeriod);
 
    const totalOP = orbitalPArrays.reduce((total, current) => {
-      return (total || 0) + (current || 0)
+      return total + current
    }, 0)
 
    return totalOP;
