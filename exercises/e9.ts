@@ -5,13 +5,9 @@
 import { Planet } from "../data/dataTypes";
 
 export let findEarthData = (data: {planets: Planet[]}) => {
-
-   const totalPlanets:Planet[] = data.planets;
-
-   return totalPlanets
-      .filter((item) => {
+   return data.planets.find((item) => {
          return item.name === 'Earth';
-      })[0]; 
+      }); 
 };
 
 // === TEST YOURSELF ===

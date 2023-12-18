@@ -5,11 +5,7 @@ import { Planet } from "../data/dataTypes";
 
 export function getPlanetsWithNoMoons(planets: Planet[]) {
    return planets
-      .filter((item) => {
-         if(!item.moons){
-            return true
-         }
-      })
+      .filter((item) => !item.moons)
 }
 
 // === TEST YOURSELF ===

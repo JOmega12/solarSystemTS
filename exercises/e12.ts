@@ -5,17 +5,8 @@ import { Planet } from "../data/dataTypes";
 
 // Return example: 42
 export const allPlanetsMoonsCount = (data: { planets: Planet[] }) => {
-  const planetArrayWithMoons = data.planets
-    .filter((planet): planet is Planet & { moonsCount: number } => {
-      if (planet.moonsCount !== undefined) {
-        return true;
-      }
-      return false;
-    })
-    .map((item) => item.moonsCount);
-
-  const totalMoons = planetArrayWithMoons.reduce((total, current) => {
-    return total + current;
+  const totalMoons = data.planets.reduce((total, planet) => {
+    return planet.moonsCount !== undefined ? total + planet.moonsCount : total;
   }, 0);
 
   return totalMoons;

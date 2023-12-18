@@ -2,16 +2,19 @@
 // Return a Planet by a given moon name
 //  must have destructured parameters
 
-import { Planet } from "../data/dataTypes"
+import { Planet } from "../data/dataTypes";
 
 type PlanetMoonParamsT = {
-   planets: Planet[];
-   moonName: string;
-}
+  planets: Planet[];
+  moonName: string;
+};
 
 export function findPlanetByMoon({ planets, moonName }: PlanetMoonParamsT) {
-   return planets
-      .find((item) => item.moons?.includes(moonName[0]!.toUpperCase() + moonName!.toLowerCase().substring(1)))
+  return planets.find((item) =>
+    item.moons?.includes(
+      moonName[0]!.toUpperCase() + moonName!.toLowerCase().substring(1)
+    )
+  );
 }
 
 // === TEST YOURSELF ===

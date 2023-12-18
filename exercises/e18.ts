@@ -7,15 +7,24 @@ import { Asteroid } from "../data/dataTypes";
 import { maxBy } from "./e17";
 
 export function getGreatestDiscoveryYear(asteroids: Asteroid[]) {
+  // const discoveryYear:number[] = asteroids.map((item) => item.discoveryYear);
 
-   const discoveryYear:number[] = asteroids.map((item) => item.discoveryYear);
+  // if(Array.isArray(discoveryYear) && discoveryYear.length > 0 ) {
+  //    const mostAsteroidsPerYear = maxBy(discoveryYear, (year) => asteroids.filter(item => item.discoveryYear === year).length)
+  //    return mostAsteroidsPerYear;
+  // }
+  // return undefined;
 
-   if(Array.isArray(discoveryYear) && discoveryYear.length > 0 ) {
-      const mostAsteroidsPerYear = maxBy(discoveryYear, (year) => asteroids.filter(item => item.discoveryYear === year).length)
-      return mostAsteroidsPerYear;
-   }
-   return undefined;
+  const yearMap = new Map<number, number>();
 
+  for (let asteroid of asteroids) {
+    yearMap.set(
+      asteroid.discoveryYear,
+      (yearMap.get(asteroid.discoveryYear) ?? 0) + 1
+    );
+  }
+
+  return maxBy([...yearMap.entries()], (entry) => entry[1])?.[0];
 }
 
 // === TEST YOURSELF ===
